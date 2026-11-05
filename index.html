@@ -98,6 +98,7 @@ a.tile:focus-visible{outline:3px solid var(--green);outline-offset:3px}
 .install button:hover{background:var(--green-dark)}
 .install button:focus-visible{outline:3px solid var(--yellow);outline-offset:2px}
 .install p{margin:0;line-height:1.4}
+#instHelp{display:flex;flex-direction:column;gap:6px;border-top:1px solid #d9dedb;padding-top:10px}
 .small{font-size:14px;color:var(--muted)}
 
 .bottom{background:var(--green);color:#fff;padding-block:12px;display:flex;justify-content:space-between;align-items:center;gap:8px 24px;flex-wrap:wrap}
@@ -212,8 +213,13 @@ a.tile:focus-visible{outline:3px solid var(--green);outline-offset:3px}
       <section class="note install" aria-labelledby="hi">
         <h2 id="hi">Installer som app</h2>
         <p id="instText">Få portalen som eget ikon på PC-en. Den virker også uten nett.</p>
-        <button type="button" id="inst" hidden>Installer app</button>
-        <p class="small" id="instHelp">I Edge eller Chrome: trykk på installer-ikonet i adressefeltet, eller menyen «…» → «Apper» → «Installer dette nettstedet som en app».</p>
+        <button type="button" id="inst" aria-expanded="false" aria-controls="instHelp">Installer app</button>
+        <div class="small" id="instHelp" hidden>
+          <p><b>Edge:</b> Trykk på menyen <b>…</b> øverst til høyre → <b>Apper</b> → <b>Installer dette nettstedet som en app</b>.</p>
+          <p><b>Chrome:</b> Trykk på installer-ikonet (en skjerm med pil) til høyre i adressefeltet. Eller menyen <b>⋮</b> → <b>Lagre og del</b> → <b>Installer side som app</b>.</p>
+          <p><b>iPhone (Safari):</b> Trykk <b>Del</b> → <b>Legg til på Hjem-skjerm</b>.</p>
+          <p><b>Android (Chrome):</b> Menyen <b>⋮</b> → <b>Legg til på startsiden</b> eller <b>Installer app</b>.</p>
+        </div>
       </section>
     </div>
 
@@ -244,8 +250,12 @@ a.tile:focus-visible{outline:3px solid var(--green);outline-offset:3px}
 <script>
 let deferred = null;
 const inst = document.getElementById("inst"), help = document.getElementById("instHelp");
-window.addEventListener("beforeinstallprompt", e => { e.preventDefault(); deferred = e; inst.hidden = false; help.hidden = true; });
-inst.addEventListener("click", async () => { if(!deferred) return; deferred.prompt(); await deferred.userChoice; deferred = null; inst.hidden = true; });
+window.addEventListener("beforeinstallprompt", e => { e.preventDefault(); deferred = e; });
+inst.addEventListener("click", async () => {
+  if (deferred) { deferred.prompt(); const r = await deferred.userChoice; deferred = null; if (r.outcome === "accepted") inst.hidden = true; return; }
+  help.hidden = !help.hidden; inst.setAttribute("aria-expanded", String(!help.hidden));
+  inst.textContent = help.hidden ? "Installer app" : "Skjul veiledning";
+});
 window.addEventListener("appinstalled", () => { document.getElementById("instText").textContent = "Appen er installert. Du finner den på skrivebordet eller i startmenyen."; inst.hidden = true; help.hidden = true; });
 if (window.matchMedia("(display-mode: standalone)").matches) { document.getElementById("instText").textContent = "Du bruker portalen som app."; help.hidden = true; }
 if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(() => {});

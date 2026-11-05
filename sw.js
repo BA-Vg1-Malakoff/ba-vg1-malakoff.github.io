@@ -1,7 +1,7 @@
 // Elevportal BA Vg1 – enkel offline-støtte.
 // Henter alltid nyeste versjon fra nettet når det er mulig, og bruker lagret kopi uten nett.
 // Øk VERSJON når filer legges til i FILER.
-const VERSJON = "v1";
+const VERSJON = "v2";
 const CACHE = "elevportal-" + VERSJON;
 const FILER = [
   "./",

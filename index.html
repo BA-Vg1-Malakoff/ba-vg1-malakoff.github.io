@@ -1,139 +1,254 @@
-﻿<!doctype html>
+﻿﻿<!doctype html>
 <html lang="nb">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Elevportal BA Vg1</title>
-<meta name="description" content="Verktøy for elever i Vg1 bygg- og anleggsteknikk ved Malakoff videregående skole.">
+<meta name="description" content="HMS-tavle og skjemaer for elever i Vg1 bygg- og anleggsteknikk ved Malakoff videregående skole.">
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#0d5a3a">
 <link rel="icon" href="ikoner/ikon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="ikoner/ikon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600;700&display=swap">
 <style>
+/* HMS-tavle som startside. Én bevisst lys «tavle»-look, uavhengig av mørk modus. */
 :root{
-  --bg:#e8eaeb; --surface:#ffffff; --surface-2:#f4f5f6; --ink:#1b2227; --muted:#5b666f; --line:#cdd3d7;
-  --brand:#0d5a3a; --brand-ink:#ffffff; --accent:#e2560b; --tape-dark:#1b2227;
+  --green:#0d5a3a; --green-dark:#083d27; --board:#d9dedb; --paper:#ffffff; --ink:#1a1f1c; --muted:#4a524d;
+  --blue:#1f5ea8; --red:#c8322a; --amber:#e0a800; --yellow:#f2c200; --tile:#b6b0a7; --tile-hover:#a59e94;
   --display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
-  --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --body:Barlow,Arial,sans-serif;
   color-scheme:light;
 }
-@media (prefers-color-scheme: dark){:root{
-  --bg:#14181b; --surface:#1e2327; --surface-2:#252b30; --ink:#e7ebee; --muted:#9aa6af; --line:#353d44;
-  --brand:#16784f; --brand-ink:#ffffff; --accent:#ff7a33; --tape-dark:#0d1012; color-scheme:dark}}
 *{box-sizing:border-box}
-html,body{margin:0}
-body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.5}
-a{color:inherit}
-.wrap{max-width:960px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+html,body{margin:0;background:var(--green)}
+body{font-family:var(--body);color:var(--ink);font-size:16px;line-height:1.35;padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px)}
+.board{max-width:1600px;margin:0 auto;background:var(--board);border:14px solid var(--green);min-height:100vh;display:flex;flex-direction:column}
+@media (max-width:700px){.board{border-width:6px}}
+.pad{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+@media (min-width:700px){.pad{padding-left:32px;padding-right:32px}}
 
-header{background:var(--brand);color:var(--brand-ink);padding-top:env(safe-area-inset-top,0px)}
-header .wrap{padding-block:28px 26px;display:flex;align-items:flex-end;gap:20px;flex-wrap:wrap}
-.mark{font-family:var(--display);font-weight:800;font-size:64px;line-height:.85;letter-spacing:.01em}
-.titles{flex:1 1 260px;min-width:0}
-.titles h1{font-family:var(--display);font-weight:700;font-size:30px;line-height:1.05;margin:0;text-transform:uppercase;letter-spacing:.03em;text-wrap:balance}
-.titles p{margin:4px 0 0;opacity:.9}
-.tape{height:8px;background:repeating-linear-gradient(-45deg,var(--accent) 0 14px,var(--tape-dark) 14px 28px)}
+/* Topp */
+.top{background:var(--green);color:#fff;padding-block:18px 22px;display:flex;align-items:center;gap:12px 28px;flex-wrap:wrap}
+.hms{font-family:var(--display);font-weight:800;font-size:88px;line-height:.9;letter-spacing:.02em}
+.top .t{flex:1 1 260px;min-width:0;display:flex;flex-direction:column;gap:4px}
+.top h1{font-family:var(--display);font-weight:700;font-size:34px;line-height:1;margin:0;text-transform:uppercase;letter-spacing:.04em;text-wrap:balance}
+.top p{margin:0;font-size:20px;font-weight:500}
+.stamp{border:3px solid var(--yellow);color:var(--yellow);font-family:var(--display);font-weight:700;font-size:20px;line-height:1.15;padding:8px 14px;text-transform:uppercase;letter-spacing:.06em;transform:rotate(-3deg);text-align:center}
+@media (max-width:560px){.hms{font-size:64px}.top h1{font-size:26px}.top p{font-size:17px}}
 
-main.wrap{padding-block:28px 56px;display:flex;flex-direction:column;gap:32px}
-h2{font-family:var(--display);font-weight:700;font-size:24px;text-transform:uppercase;letter-spacing:.04em;margin:0 0 12px}
+/* Skilt */
+.signs{background:var(--paper);padding-block:14px;border-bottom:4px solid var(--green);display:flex;flex-wrap:wrap;gap:14px 40px;align-items:center}
+.group{display:flex;align-items:center;gap:14px 22px;flex-wrap:wrap}
+.group h2{font-family:var(--display);font-weight:700;font-size:26px;line-height:1.05;text-transform:uppercase;margin:0;width:190px}
+.icons{display:flex;gap:14px 22px;flex-wrap:wrap}
+.sign{display:flex;flex-direction:column;align-items:center;gap:6px;width:100px}
+.sign i{width:84px;height:84px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center}
+.sign svg{width:56px;height:56px;fill:none;stroke:#fff;stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round}
+.sign span{font-weight:600;font-size:16px;text-align:center}
+@media (max-width:560px){.group h2{width:100%;font-size:22px}.sign{width:76px}.sign i{width:64px;height:64px}.sign svg{width:42px;height:42px}.sign span{font-size:14px}}
 
-.tools{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
-.tool{display:flex;flex-direction:column;gap:10px;padding:18px;background:var(--surface);border:2px solid var(--line);border-radius:10px;text-decoration:none;transition:border-color .15s,transform .15s}
-.tool:hover{border-color:var(--brand);transform:translateY(-2px)}
-.tool:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
-.tool svg{width:40px;height:40px;stroke:var(--brand);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-@media (prefers-color-scheme: dark){.tool svg{stroke:#5fd39a}}
-.tool b{font-family:var(--display);font-size:24px;font-weight:700;line-height:1.05}
-.tool span{color:var(--muted);font-size:14px}
-.tool .go{margin-top:auto;font-weight:600;font-size:14px;color:var(--accent)}
-.tool.soon{border-style:dashed;background:transparent;cursor:default}
-.tool.soon:hover{border-color:var(--line);transform:none}
-.tool.soon svg{stroke:var(--muted)}
+/* Oppslag */
+.notices{flex:1;padding-block:24px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;align-items:start}
+@media (max-width:1100px){.notices{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:720px){.notices{grid-template-columns:minmax(0,1fr)}}
+.col{display:flex;flex-direction:column;gap:20px;min-width:0}
+.note{background:var(--paper);padding:18px 20px;box-shadow:0 2px 0 rgba(0,0,0,.12);display:flex;flex-direction:column;gap:10px}
+.note h2{font-family:var(--display);font-weight:700;font-size:26px;text-transform:uppercase;color:var(--green);border-bottom:3px solid var(--green);padding-bottom:4px;margin:0}
+.kv{display:grid;grid-template-columns:150px minmax(0,1fr);gap:7px 12px;margin:0}
+.kv dt{font-weight:700}.kv dd{margin:0}
+@media (max-width:420px){.kv{grid-template-columns:minmax(0,1fr)}.kv dd{margin-bottom:6px}}
+.rules{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:7px}
+.rules li::before{content:"☐ "}
+.risk{display:flex;flex-direction:column;gap:8px}
+.risk div{display:flex;gap:10px;align-items:flex-start}
+.tag{color:#fff;font-weight:700;font-size:13px;padding:3px 8px;white-space:nowrap}
+.tag.hoy{background:var(--red)}.tag.mid{background:var(--amber);color:var(--ink)}
 
-.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;list-style:none;margin:0;padding:0;counter-reset:s}
-.steps li{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:14px 16px;counter-increment:s;display:flex;flex-direction:column;gap:4px}
-.steps li::before{content:counter(s);font-family:var(--display);font-weight:800;font-size:28px;line-height:1;color:var(--accent)}
-.steps b{font-size:15px}
-.steps span{color:var(--muted);font-size:14px}
+.alarm{background:var(--red);color:#fff;padding:18px 20px;box-shadow:0 2px 0 rgba(0,0,0,.12);display:flex;flex-direction:column;gap:12px}
+.alarm h2{font-family:var(--display);font-weight:800;font-size:30px;text-transform:uppercase;line-height:1;margin:0}
+.nums{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;text-align:center}
+.nums a{background:#fff;color:var(--red);padding:6px 4px;text-decoration:none}
+.nums b{display:block;font-family:var(--display);font-weight:800;font-size:44px;line-height:1}
+.nums span{font-weight:600;font-size:14px;color:var(--ink)}
+.alarm p{margin:0}
 
-.install{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
-.install p{margin:0;flex:1 1 280px;min-width:0;color:var(--muted);font-size:15px}
-.install p b{color:var(--ink)}
-.btn{font:inherit;font-weight:600;font-size:15px;cursor:pointer;border-radius:6px;padding:10px 16px;border:1px solid var(--brand);background:var(--brand);color:var(--brand-ink)}
-.btn:hover{filter:brightness(1.1)}
-.btn:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.rig{position:relative;height:260px;background:#eef1ef;border:2px dashed #6b746e;overflow:hidden}
+.rig div{position:absolute;display:flex;align-items:center;justify-content:center;text-align:center;font-weight:600;font-size:13px;line-height:1.1}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:14px}
+.legend span{display:flex;align-items:center;gap:6px}
+.legend i{width:16px;height:16px;display:inline-block}
+
+/* Skjemaer – de grå feltene */
+.forms{grid-column:1 / span 2}
+@media (max-width:1100px){.forms{grid-column:1 / -1}}
+.forms h2{font-family:var(--display);font-weight:700;font-size:26px;text-transform:uppercase;margin:0 0 10px;color:var(--ink)}
+.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:16px}
+.tile{background:var(--tile);border-radius:8px;min-height:213px;padding:16px 14px;display:flex;flex-direction:column;gap:10px;text-decoration:none;color:var(--ink);transition:background .15s,transform .15s;border:0}
+a.tile:hover{background:var(--tile-hover);transform:translateY(-3px)}
+a.tile:focus-visible{outline:3px solid var(--green);outline-offset:3px}
+.tile svg{width:64px;height:58px}
+.tile b{font-family:var(--display);font-weight:700;font-size:24px;line-height:1.05;text-transform:uppercase}
+.tile span{font-size:14px;line-height:1.3}
+.tile .go{margin-top:auto;align-self:flex-start;background:var(--green);color:#fff;font-weight:700;font-size:15px;padding:8px 12px}
+.tile.empty{opacity:.55;align-items:center;justify-content:center;text-align:center}
+.tile.empty b{font-size:20px}
+
+.install button{align-self:flex-start;font:inherit;font-weight:700;font-size:17px;background:var(--green);color:#fff;border:0;padding:10px 18px;cursor:pointer}
+.install button:hover{background:var(--green-dark)}
+.install button:focus-visible{outline:3px solid var(--yellow);outline-offset:2px}
+.install p{margin:0;line-height:1.4}
+.small{font-size:14px;color:var(--muted)}
+
+.bottom{background:var(--green);color:#fff;padding-block:12px;display:flex;justify-content:space-between;align-items:center;gap:8px 24px;flex-wrap:wrap}
 [hidden]{display:none!important}
-footer{color:var(--muted);font-size:13px;padding-bottom:max(24px,env(safe-area-inset-bottom,0px))}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
 <body>
-<header>
-  <div class="wrap">
-    <div class="mark">BA</div>
-    <div class="titles">
-      <h1>Elevportal Vg1 bygg- og anleggsteknikk</h1>
-      <p>Malakoff videregående skole</p>
-    </div>
-  </div>
-  <div class="tape"></div>
-</header>
+<div class="board">
 
-<main class="wrap">
-  <section aria-labelledby="hv">
-    <h2 id="hv">Verktøy</h2>
-    <div class="tools">
-      <a class="tool" href="risikovurdering/">
-        <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 4 29 27H3z"/><path d="M16 13v7"/><path d="M16 23.5v.5"/></svg>
-        <b>Risikovurdering</b>
-        <span>Fire soner: råbygg, teknisk sone, våtromssone og vindu-/fasadesone. Fyll ut før arbeidet starter.</span>
-        <span class="go">Åpne →</span>
-      </a>
-      <div class="tool soon" aria-disabled="true">
-        <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="5" y="5" width="22" height="22" rx="2"/><path d="M16 11v10M11 16h10"/></svg>
-        <b>Flere verktøy kommer</b>
-        <span>Nye skjemaer og oppgaver legges ut her etter hvert.</span>
+  <header class="top pad">
+    <div class="hms" aria-hidden="true">HMS</div>
+    <div class="t">
+      <h1>Helse, miljø og sikkerhet</h1>
+      <p>Prosjekt i Verkstedet</p>
+    </div>
+    <div class="stamp">NB: Se på denne tavlen jevnlig</div>
+  </header>
+
+  <section class="signs pad" aria-label="Verneutstyr">
+    <div class="group">
+      <h2>Påbudt verneutstyr på byggeplassen</h2>
+      <div class="icons">
+        <div class="sign"><i><svg viewBox="0 0 56 56" aria-hidden="true"><path d="M14 10h14v20l14 6c3 1 4 3 4 6v4H10V10z"/><path d="M10 40h36"/></svg></i><span>Vernesko</span></div>
+        <div class="sign"><i><svg viewBox="0 0 56 56" aria-hidden="true"><path d="M6 24h44"/><path d="M8 24v6a8 8 0 0 0 16 0v-6"/><path d="M32 24v6a8 8 0 0 0 16 0v-6"/><path d="M24 27h8"/></svg></i><span>Vernebriller</span></div>
+        <div class="sign"><i><svg viewBox="0 0 56 56" aria-hidden="true"><path d="M14 30V24a14 14 0 0 1 28 0v6"/><rect x="8" y="28" width="10" height="16" rx="4"/><rect x="38" y="28" width="10" height="16" rx="4"/></svg></i><span>Hørselvern</span></div>
+        <div class="sign"><i><svg viewBox="0 0 56 56" aria-hidden="true"><path d="M20 8l-10 6v32h36V14l-10-6-8 10z"/><path d="M10 30h36"/><path d="M10 37h36"/></svg></i><span>Arbeidstøy</span></div>
+      </div>
+    </div>
+    <div class="group">
+      <h2>Etter behov</h2>
+      <div class="icons">
+        <div class="sign"><i><svg viewBox="0 0 56 56" aria-hidden="true"><path d="M12 36a16 16 0 0 1 32 0"/><path d="M8 36h40v5H8z"/><path d="M28 20v-6"/></svg></i><span>Hjelm</span></div>
+        <div class="sign"><i><svg viewBox="0 0 56 56" aria-hidden="true"><path d="M20 8l-10 6v32h36V14l-10-6-8 10z"/><path d="M10 30h36"/><path d="M10 37h36"/></svg></i><span>Synlighetstøy</span></div>
+        <div class="sign"><i><svg viewBox="0 0 56 56" aria-hidden="true"><path d="M18 48V24l-6-6a3 3 0 0 1 4-4l4 4V10a3 3 0 0 1 6 0v12V8a3 3 0 0 1 6 0v14V10a3 3 0 0 1 6 0v14V16a3 3 0 0 1 6 0v18c0 8-4 14-10 14z"/></svg></i><span>Hansker</span></div>
       </div>
     </div>
   </section>
 
-  <section aria-labelledby="hl">
-    <h2 id="hl">Slik leverer du</h2>
-    <ol class="steps">
-      <li><b>Fyll ut</b><span>Det du skriver, lagres automatisk på PC-en din.</span></li>
-      <li><b>Last ned Word-fil</b><span>Trykk «Last ned Word-fil» når du er ferdig.</span></li>
-      <li><b>Lever i Teams</b><span>Last opp filen i oppgaven læreren har gitt.</span></li>
-      <li><b>Ta vare på</b><span>Lagre en kopi i OneDrive, så har du den senere.</span></li>
-    </ol>
-  </section>
+  <main class="notices pad">
+    <!-- Kolonne 1 -->
+    <div class="col">
+      <section class="note">
+        <h2>Kontaktpersoner</h2>
+        <dl class="kv">
+          <dt>Byggherre</dt><dd>Malakoff VGS</dd>
+          <dt>Hovedentreprenør</dt><dd>BA VG1</dd>
+          <dt>Byggeplassleder</dt><dd>Per Espen, Dag Olav, Thomas</dd>
+          <dt>Verneombud</dt><dd>Elev? · tlf. xxx xx xxx</dd>
+        </dl>
+      </section>
+      <section class="note">
+        <h2>Regler på byggeplassen</h2>
+        <ul class="rules">
+          <li>Meld deg hos byggeplassleder før du starter.</li>
+          <li>Registrer deg på oversiktslisten hver dag.</li>
+          <li>Bær HMS-kortet synlig.</li>
+          <li>Les SHA-planen og risikovurderingen for jobben din.</li>
+          <li>Rydd etter deg – kildesorter avfallet.</li>
+          <li>Meld fra om farlige forhold og uønskede hendelser (RUH).</li>
+          <li>Ingen uvedkommende innenfor gjerdet.</li>
+        </ul>
+      </section>
+    </div>
 
-  <section class="install" aria-labelledby="hi">
-    <p id="hi"><b>Installer portalen som app.</b> Da får du et eget ikon på PC-en, og verktøyene virker også uten nett. <span id="instHelp">I Edge eller Chrome: trykk på installer-ikonet i adressefeltet, eller menyen «…» → «Apper» → «Installer dette nettstedet som en app».</span></p>
-    <button class="btn" id="inst" type="button" hidden>Installer app</button>
-  </section>
+    <!-- Kolonne 2 -->
+    <div class="col">
+      <section class="note">
+        <h2>Særlig risiko – uke 45</h2>
+        <div class="risk">
+          <div><span class="tag hoy">HØY</span><span><b>Takarbeid:</b> stillas med rekkverk og fallsikring. Ingen under arbeidsområdet.</span></div>
+          <div><span class="tag hoy">HØY</span><span><b>Kranløft av takstoler</b> tirsdag: avsperret løfteområde, signalgiver på plass.</span></div>
+          <div><span class="tag mid">MIDDELS</span><span><b>Kapping av kledning:</b> avsug, vernebriller og hørselvern.</span></div>
+        </div>
+      </section>
+    </div>
 
-  <footer>Laget for Vg1 bygg- og anleggsteknikk, Malakoff vgs. Ingen data sendes fra portalen – alt du skriver blir værende på din egen PC til du leverer.</footer>
-</main>
+    <!-- Kolonne 3 -->
+    <div class="col" style="grid-row: span 2">
+      <section class="alarm">
+        <h2>Ved ulykke</h2>
+        <div class="nums">
+          <a href="tel:113"><b>113</b><span>Ambulanse</span></a>
+          <a href="tel:110"><b>110</b><span>Brann</span></a>
+          <a href="tel:112"><b>112</b><span>Politi</span></a>
+        </div>
+        <p>1. Stans arbeidet og sikre stedet. 2. Gi førstehjelp. 3. Ring nødnummer. 4. Varsle byggeplassleder.</p>
+        <p style="font-size:15px">Giftinformasjonen: <b>22 59 13 00</b><br>Adresse til nødetatene: <b>Dyreveien 9</b></p>
+      </section>
+
+      <section class="note">
+        <h2>Riggplan</h2>
+        <div class="rig" role="img" aria-label="Riggplan for verkstedet med brakke, materiallager, avfall, port, oppmøteplass, brannslukker og førstehjelp">
+          <div style="left:0;right:0;bottom:0;height:26px;background:#6b746e;color:#fff">Verkstedet</div>
+          <div style="left:150px;bottom:24px;width:70px;height:10px;background:var(--yellow);border:2px solid var(--ink)"></div>
+          <div style="left:150px;bottom:38px;font-size:12px;font-weight:700">Port</div>
+          <div style="left:140px;top:30px;width:150px;height:110px;background:#c9d2cc;border:2px solid var(--ink);font-weight:700;font-size:15px">Enebolig</div>
+          <div style="left:300px;top:50px;width:80px;height:70px;background:#c9d2cc;border:2px solid var(--ink)">Garasje</div>
+          <div style="left:12px;top:20px;width:110px;height:48px;background:#fff;border:2px solid var(--green)">Brakke<br>spise/skift</div>
+          <div style="left:12px;top:80px;width:110px;height:40px;background:#fff;border:2px solid var(--blue)">Materiallager</div>
+          <div style="left:12px;top:132px;width:110px;height:40px;background:#fff;border:2px solid #6b746e">Avfall</div>
+          <div style="left:300px;top:160px;width:76px;height:56px;border-radius:50%;background:var(--green);color:#fff;font-size:12px;font-weight:700">Oppmøte-<br>plass</div>
+          <div style="left:20px;top:190px;width:22px;height:22px;background:var(--red);color:#fff;font-size:12px;font-weight:800">B</div>
+          <div style="left:48px;top:190px;width:22px;height:22px;background:#2e8b57;color:#fff;font-size:14px;font-weight:800">+</div>
+        </div>
+        <div class="legend">
+          <span><i style="background:var(--red)"></i>Brannslukker</span>
+          <span><i style="background:#2e8b57"></i>Førstehjelp og hjertestarter (i brakka)</span>
+        </div>
+      </section>
+
+      <section class="note install" aria-labelledby="hi">
+        <h2 id="hi">Installer som app</h2>
+        <p id="instText">Få portalen som eget ikon på PC-en. Den virker også uten nett.</p>
+        <button type="button" id="inst" hidden>Installer app</button>
+        <p class="small" id="instHelp">I Edge eller Chrome: trykk på installer-ikonet i adressefeltet, eller menyen «…» → «Apper» → «Installer dette nettstedet som en app».</p>
+      </section>
+    </div>
+
+    <!-- Skjemaer (de grå feltene) -->
+    <section class="forms" aria-labelledby="hs">
+      <h2 id="hs">Skjemaer</h2>
+      <div class="tiles">
+        <a class="tile" href="risikovurdering/">
+          <svg viewBox="0 0 92 84" aria-hidden="true"><path d="M46 4 88 80H4z" fill="#f2c200" stroke="#1a1f1c" stroke-width="5" stroke-linejoin="round"/><path d="M46 30v24" stroke="#1a1f1c" stroke-width="7" stroke-linecap="round"/><circle cx="46" cy="66" r="4.5" fill="#1a1f1c"/></svg>
+          <b>Risiko&shy;vurdering</b>
+          <span>Fire soner. Fyll ut før arbeidet starter.</span>
+          <span class="go">Åpne →</span>
+        </a>
+        <div class="tile empty" aria-hidden="true"><b>Kommer</b></div>
+        <div class="tile empty" aria-hidden="true"><b>Kommer</b></div>
+        <div class="tile empty" aria-hidden="true"><b>Kommer</b></div>
+        <div class="tile empty" aria-hidden="true"><b>Kommer</b></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bottom pad">
+    <div><b>Sikkerhet først.</b> Er du usikker – stopp og spør byggeplassleder.</div>
+    <div>Tavla sist kontrollert: <b>02.11.2026</b> · Ansvarlig: byggeplassleder</div>
+  </footer>
+</div>
 
 <script>
 let deferred = null;
-window.addEventListener("beforeinstallprompt", e => {
-  e.preventDefault(); deferred = e;
-  document.getElementById("inst").hidden = false;
-  document.getElementById("instHelp").hidden = true;
-});
-document.getElementById("inst").addEventListener("click", async () => {
-  if(!deferred) return;
-  deferred.prompt(); await deferred.userChoice; deferred = null;
-  document.getElementById("inst").hidden = true;
-});
-window.addEventListener("appinstalled", () => {
-  document.getElementById("hi").innerHTML = "<b>Appen er installert.</b> Du finner den på skrivebordet eller i startmenyen.";
-  document.getElementById("inst").hidden = true;
-});
-if("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(()=>{});
+const inst = document.getElementById("inst"), help = document.getElementById("instHelp");
+window.addEventListener("beforeinstallprompt", e => { e.preventDefault(); deferred = e; inst.hidden = false; help.hidden = true; });
+inst.addEventListener("click", async () => { if(!deferred) return; deferred.prompt(); await deferred.userChoice; deferred = null; inst.hidden = true; });
+window.addEventListener("appinstalled", () => { document.getElementById("instText").textContent = "Appen er installert. Du finner den på skrivebordet eller i startmenyen."; inst.hidden = true; help.hidden = true; });
+if (window.matchMedia("(display-mode: standalone)").matches) { document.getElementById("instText").textContent = "Du bruker portalen som app."; help.hidden = true; }
+if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(() => {});
 </script>
 </body>
 </html>

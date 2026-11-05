@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <pattern id="t" width="56" height="56" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)">
+      <rect width="28" height="56" fill="#e2560b"/><rect x="28" width="28" height="56" fill="#1b2227"/>
+    </pattern>
+  </defs>
+  <rect width="512" height="512" rx="96" fill="#0d5a3a"/>
+  <text x="256" y="300" text-anchor="middle" font-family="Arial Narrow, Arial, sans-serif" font-weight="800" font-size="230" fill="#ffffff" letter-spacing="-6">BA</text>
+  <rect x="96" y="352" width="320" height="44" fill="url(#t)"/>
+</svg>

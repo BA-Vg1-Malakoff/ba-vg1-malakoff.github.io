@@ -1,0 +1,139 @@
+﻿<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Elevportal BA Vg1</title>
+<meta name="description" content="Verktøy for elever i Vg1 bygg- og anleggsteknikk ved Malakoff videregående skole.">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#0d5a3a">
+<link rel="icon" href="ikoner/ikon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="ikoner/ikon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+:root{
+  --bg:#e8eaeb; --surface:#ffffff; --surface-2:#f4f5f6; --ink:#1b2227; --muted:#5b666f; --line:#cdd3d7;
+  --brand:#0d5a3a; --brand-ink:#ffffff; --accent:#e2560b; --tape-dark:#1b2227;
+  --display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
+  --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){:root{
+  --bg:#14181b; --surface:#1e2327; --surface-2:#252b30; --ink:#e7ebee; --muted:#9aa6af; --line:#353d44;
+  --brand:#16784f; --brand-ink:#ffffff; --accent:#ff7a33; --tape-dark:#0d1012; color-scheme:dark}}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.5}
+a{color:inherit}
+.wrap{max-width:960px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+header{background:var(--brand);color:var(--brand-ink);padding-top:env(safe-area-inset-top,0px)}
+header .wrap{padding-block:28px 26px;display:flex;align-items:flex-end;gap:20px;flex-wrap:wrap}
+.mark{font-family:var(--display);font-weight:800;font-size:64px;line-height:.85;letter-spacing:.01em}
+.titles{flex:1 1 260px;min-width:0}
+.titles h1{font-family:var(--display);font-weight:700;font-size:30px;line-height:1.05;margin:0;text-transform:uppercase;letter-spacing:.03em;text-wrap:balance}
+.titles p{margin:4px 0 0;opacity:.9}
+.tape{height:8px;background:repeating-linear-gradient(-45deg,var(--accent) 0 14px,var(--tape-dark) 14px 28px)}
+
+main.wrap{padding-block:28px 56px;display:flex;flex-direction:column;gap:32px}
+h2{font-family:var(--display);font-weight:700;font-size:24px;text-transform:uppercase;letter-spacing:.04em;margin:0 0 12px}
+
+.tools{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+.tool{display:flex;flex-direction:column;gap:10px;padding:18px;background:var(--surface);border:2px solid var(--line);border-radius:10px;text-decoration:none;transition:border-color .15s,transform .15s}
+.tool:hover{border-color:var(--brand);transform:translateY(-2px)}
+.tool:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.tool svg{width:40px;height:40px;stroke:var(--brand);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+@media (prefers-color-scheme: dark){.tool svg{stroke:#5fd39a}}
+.tool b{font-family:var(--display);font-size:24px;font-weight:700;line-height:1.05}
+.tool span{color:var(--muted);font-size:14px}
+.tool .go{margin-top:auto;font-weight:600;font-size:14px;color:var(--accent)}
+.tool.soon{border-style:dashed;background:transparent;cursor:default}
+.tool.soon:hover{border-color:var(--line);transform:none}
+.tool.soon svg{stroke:var(--muted)}
+
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;list-style:none;margin:0;padding:0;counter-reset:s}
+.steps li{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:14px 16px;counter-increment:s;display:flex;flex-direction:column;gap:4px}
+.steps li::before{content:counter(s);font-family:var(--display);font-weight:800;font-size:28px;line-height:1;color:var(--accent)}
+.steps b{font-size:15px}
+.steps span{color:var(--muted);font-size:14px}
+
+.install{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.install p{margin:0;flex:1 1 280px;min-width:0;color:var(--muted);font-size:15px}
+.install p b{color:var(--ink)}
+.btn{font:inherit;font-weight:600;font-size:15px;cursor:pointer;border-radius:6px;padding:10px 16px;border:1px solid var(--brand);background:var(--brand);color:var(--brand-ink)}
+.btn:hover{filter:brightness(1.1)}
+.btn:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+[hidden]{display:none!important}
+footer{color:var(--muted);font-size:13px;padding-bottom:max(24px,env(safe-area-inset-bottom,0px))}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="mark">BA</div>
+    <div class="titles">
+      <h1>Elevportal Vg1 bygg- og anleggsteknikk</h1>
+      <p>Malakoff videregående skole</p>
+    </div>
+  </div>
+  <div class="tape"></div>
+</header>
+
+<main class="wrap">
+  <section aria-labelledby="hv">
+    <h2 id="hv">Verktøy</h2>
+    <div class="tools">
+      <a class="tool" href="risikovurdering/">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 4 29 27H3z"/><path d="M16 13v7"/><path d="M16 23.5v.5"/></svg>
+        <b>Risikovurdering</b>
+        <span>Fire soner: råbygg, teknisk sone, våtromssone og vindu-/fasadesone. Fyll ut før arbeidet starter.</span>
+        <span class="go">Åpne →</span>
+      </a>
+      <div class="tool soon" aria-disabled="true">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="5" y="5" width="22" height="22" rx="2"/><path d="M16 11v10M11 16h10"/></svg>
+        <b>Flere verktøy kommer</b>
+        <span>Nye skjemaer og oppgaver legges ut her etter hvert.</span>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="hl">
+    <h2 id="hl">Slik leverer du</h2>
+    <ol class="steps">
+      <li><b>Fyll ut</b><span>Det du skriver, lagres automatisk på PC-en din.</span></li>
+      <li><b>Last ned Word-fil</b><span>Trykk «Last ned Word-fil» når du er ferdig.</span></li>
+      <li><b>Lever i Teams</b><span>Last opp filen i oppgaven læreren har gitt.</span></li>
+      <li><b>Ta vare på</b><span>Lagre en kopi i OneDrive, så har du den senere.</span></li>
+    </ol>
+  </section>
+
+  <section class="install" aria-labelledby="hi">
+    <p id="hi"><b>Installer portalen som app.</b> Da får du et eget ikon på PC-en, og verktøyene virker også uten nett. <span id="instHelp">I Edge eller Chrome: trykk på installer-ikonet i adressefeltet, eller menyen «…» → «Apper» → «Installer dette nettstedet som en app».</span></p>
+    <button class="btn" id="inst" type="button" hidden>Installer app</button>
+  </section>
+
+  <footer>Laget for Vg1 bygg- og anleggsteknikk, Malakoff vgs. Ingen data sendes fra portalen – alt du skriver blir værende på din egen PC til du leverer.</footer>
+</main>
+
+<script>
+let deferred = null;
+window.addEventListener("beforeinstallprompt", e => {
+  e.preventDefault(); deferred = e;
+  document.getElementById("inst").hidden = false;
+  document.getElementById("instHelp").hidden = true;
+});
+document.getElementById("inst").addEventListener("click", async () => {
+  if(!deferred) return;
+  deferred.prompt(); await deferred.userChoice; deferred = null;
+  document.getElementById("inst").hidden = true;
+});
+window.addEventListener("appinstalled", () => {
+  document.getElementById("hi").innerHTML = "<b>Appen er installert.</b> Du finner den på skrivebordet eller i startmenyen.";
+  document.getElementById("inst").hidden = true;
+});
+if("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(()=>{});
+</script>
+</body>
+</html>

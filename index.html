@@ -58,6 +58,12 @@ body{font-family:var(--body);color:var(--ink);font-size:16px;line-height:1.35;pa
 .kv{display:grid;grid-template-columns:150px minmax(0,1fr);gap:7px 12px;margin:0}
 .kv dt{font-weight:700}.kv dd{margin:0}
 @media (max-width:420px){.kv{grid-template-columns:minmax(0,1fr)}.kv dd{margin-bottom:6px}}
+.leaders{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.leaders li{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.chat{display:inline-flex;align-items:center;gap:6px;background:#4b53bc;color:#fff;font-weight:600;font-size:14px;padding:5px 10px;text-decoration:none;border-radius:4px;min-height:32px}
+.chat:hover{background:#3d449c}
+.chat:focus-visible{outline:3px solid var(--yellow);outline-offset:2px}
+.chat svg{width:16px;height:16px;fill:none;stroke:#fff;stroke-width:2;stroke-linejoin:round}
 .rules{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:7px}
 .rules li::before{content:"☐ "}
 .risk{display:flex;flex-direction:column;gap:8px}
@@ -146,8 +152,12 @@ a.tile:focus-visible{outline:3px solid var(--green);outline-offset:3px}
         <dl class="kv">
           <dt>Byggherre</dt><dd>Malakoff VGS</dd>
           <dt>Hovedentreprenør</dt><dd>BA VG1</dd>
-          <dt>Byggeplassleder</dt><dd>Per Espen, Dag Olav, Thomas</dd>
-          <dt>Verneombud</dt><dd>Elev? · tlf. xxx xx xxx</dd>
+          <dt>Byggeplassleder</dt><dd><ul class="leaders">
+            <li><span>Per Espen</span><a class="chat" href="https://teams.microsoft.com/l/chat/0/0?users=perw@ofk.no" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h11a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H9l-4 3v-3H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z"/></svg>Chat i Teams</a></li>
+            <li><span>Dag Olav</span><a class="chat" href="https://teams.microsoft.com/l/chat/0/0?users=dagfis@ofk.no" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h11a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H9l-4 3v-3H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z"/></svg>Chat i Teams</a></li>
+            <li><span>Thomas</span><a class="chat" href="https://teams.microsoft.com/l/chat/0/0?users=thomasg@ofk.no" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h11a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H9l-4 3v-3H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z"/></svg>Chat i Teams</a></li>
+          </ul></dd>
+          <dt>Verneombud</dt><dd>Elev?</dd>
         </dl>
       </section>
       <section class="note">

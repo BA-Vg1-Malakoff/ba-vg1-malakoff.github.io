@@ -1,0 +1,29 @@
+{
+  "kontakter": {
+    "byggherre": "Malakoff VGS",
+    "hovedentreprenor": "BA VG1",
+    "byggeplassledere": [
+      { "navn": "Per Espen", "teams": "perw@ofk.no" },
+      { "navn": "Dag Olav", "teams": "dagfis@ofk.no" },
+      { "navn": "Thomas", "teams": "thomasg@ofk.no" }
+    ],
+    "verneombud": "Elev?"
+  },
+  "regler": [
+    "Meld deg hos byggeplassleder før du starter.",
+    "Registrer deg på oversiktslisten hver dag.",
+    "Bær HMS-kortet synlig.",
+    "Les SHA-planen og risikovurderingen for jobben din.",
+    "Rydd etter deg – kildesorter avfallet.",
+    "Meld fra om farlige forhold og uønskede hendelser (RUH).",
+    "Ingen uvedkommende innenfor gjerdet."
+  ],
+  "risiko": {
+    "uke": 45,
+    "punkter": [
+      { "niva": "HØY", "tittel": "Vindu/fasade – arbeid på stillas", "tekst": "rekkverk på plass, ingen under arbeidsområdet." },
+      { "niva": "MIDDELS", "tittel": "Råbygg – kapping på kappsag", "tekst": "vernebriller og hørselvern, sikre emnet." },
+      { "niva": "MIDDELS", "tittel": "Våtrom – sliping og blanding", "tekst": "støvmaske og avsug." }
+    ]
+  }
+}

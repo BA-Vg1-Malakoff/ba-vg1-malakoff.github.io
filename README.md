@@ -7,7 +7,9 @@ Publiseres med GitHub Pages på https://ba-vg1-malakoff.github.io/
 
 | Mappe / fil | Hva |
 |---|---|
-| `index.html` | Startsiden (portalen) med oversikt over verktøyene |
+| `index.html` | Startsiden: verktøy, kontaktpersoner, regler og særlig risiko denne uka |
+| `data/innhold.json` | Innholdet på startsiden som lærerne oppdaterer (kontakter, regler, særlig risiko) |
+| `hms-tavle/` | HMS-tavla for verkstedet |
 | `risikovurdering/` | Interaktivt skjema for risikovurdering i fire soner |
 | `manifest.webmanifest`, `sw.js`, `ikoner/` | Gjør portalen installerbar som app og brukbar uten nett |
 

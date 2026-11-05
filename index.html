@@ -68,7 +68,7 @@ body{font-family:var(--body);color:var(--ink);font-size:16px;line-height:1.35;pa
 .alarm{background:var(--red);color:#fff;padding:18px 20px;box-shadow:0 2px 0 rgba(0,0,0,.12);display:flex;flex-direction:column;gap:12px}
 .alarm h2{font-family:var(--display);font-weight:800;font-size:30px;text-transform:uppercase;line-height:1;margin:0}
 .nums{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;text-align:center}
-.nums a{background:#fff;color:var(--red);padding:6px 4px;text-decoration:none}
+.nums div{background:#fff;color:var(--red);padding:6px 4px}
 .nums b{display:block;font-family:var(--display);font-weight:800;font-size:44px;line-height:1}
 .nums span{font-weight:600;font-size:14px;color:var(--ink)}
 .alarm p{margin:0}
@@ -181,9 +181,9 @@ a.tile:focus-visible{outline:3px solid var(--green);outline-offset:3px}
       <section class="alarm">
         <h2>Ved ulykke</h2>
         <div class="nums">
-          <a href="tel:113"><b>113</b><span>Ambulanse</span></a>
-          <a href="tel:110"><b>110</b><span>Brann</span></a>
-          <a href="tel:112"><b>112</b><span>Politi</span></a>
+          <div><b>113</b><span>Ambulanse</span></div>
+          <div><b>110</b><span>Brann</span></div>
+          <div><b>112</b><span>Politi</span></div>
         </div>
         <p>1. Stans arbeidet og sikre stedet. 2. Gi førstehjelp. 3. Ring nødnummer. 4. Varsle byggeplassleder.</p>
         <p style="font-size:15px">Giftinformasjonen: <b>22 59 13 00</b><br>Adresse til nødetatene: <b>Dyreveien 9</b></p>
